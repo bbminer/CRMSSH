@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- 搭建表和类的关系 -->
+<hibernate-mapping package="com.zy.entity">
+
+	<class name="Dict" table="t_dict" lazy="false">
+	<!-- 主键 -->
+		<id name="did" column="did">
+			<generator class="increment" />
+		</id>
+		<!-- 非主键 -->
+		<property name="dname" column="dname" />
+	</class>
+
+</hibernate-mapping>

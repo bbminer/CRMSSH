@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="visit" namespace="/" extends="struts-default">
+		<!-- 联系人列表 -->
+		<action name="visitList" class="VisitAction" method="selectVisit">
+			<result>/WEB-INF/visit/list.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 跳到修改界面 -->
+		<action name="toVisitEditPage" class="VisitAction" method="toVisitEditPage">
+			<result>/WEB-INF/visit/edit.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 修改拜访记录 -->
+		<action name="visitUpdate" class="VisitAction" method="visitUpdate">
+			<result type="chain">visitList</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 根据地址查询拜访记录 -->
+		<action name="visitQueryByAddress" class="VisitAction" method="selectByAddress">
+			<result>/WEB-INF/visit/list.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 跳到增加拜访记录界面 -->
+		<action name="visitToAddPage" class="VisitAction" method="toVisitAddPage">
+			<result>/WEB-INF/visit/add.jsp</result>
+		</action>
+		<!-- 增加拜访记录 -->
+		<action name="visitAdd" class="VisitAction" method="addVisit">
+			<result type="chain">visitList</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 跳到动态查询页面 -->
+		<action name="visitToSelectPage" class="VisitAction" method="toVisitEditPage">
+			<result>/WEB-INF/visit/select.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 动态查询拜访记录 -->
+		<action name="visitMorecondition" class="VisitAction" method="select">
+			<result>/WEB-INF/visit/list.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+	</package>
+</struts>

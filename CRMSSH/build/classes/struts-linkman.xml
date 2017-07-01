@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="linkMan" namespace="/" extends="struts-default">
+		<!-- 联系人列表 -->
+		<action name="listLinkman" class="LinkManAction" method="selectLinkman">
+			<result>/WEB-INF/linkMan/list.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 跳到修改界面 -->
+		<action name="toLinkManEditPage" class="LinkManAction" method="toLinkManEditPage">
+			<result>/WEB-INF/linkMan/edit.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 修改联系人 -->
+		<action name="updateLinkMan" class="LinkManAction" method="updateLinkMan">
+			<result type="chain">listLinkman</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 跳到增加联系人界面 -->
+		<action name="toLinkmanAddPage" class="LinkManAction" method="toLinkmanAddPage">
+			<result>/WEB-INF/linkMan/add.jsp</result>
+		</action>
+		<!-- 增加联系人 -->
+		<action name="addLinkMan" class="LinkManAction" method="addLinkMan">
+			<result type="chain">listLinkman</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 根据联系人名称查询 -->
+		<action name="linkManQueryByName" class="LinkManAction" method="selectLinkManByName">
+			<result>/WEB-INF/linkMan/list.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 跳到动态查询页面 -->
+		<action name="linkmanToSelectPage" class="LinkManAction"
+			method="toLinkmanAddPage">
+			<result>/WEB-INF/linkMan/select.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 动态查询联系人 -->
+		<action name="linkmanMorecondition" class="LinkManAction"
+			method="select">
+			<result>/WEB-INF/linkMan/list.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+	</package>
+</struts>

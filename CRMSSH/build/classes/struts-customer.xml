@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="customer" namespace="/" extends="struts-default">
+		<!-- 查看客户列表 -->
+		<action name="list" class="CustomerAction" method="selectAllCustomer">
+			<result>/WEB-INF/customer/list.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 跳转到修改客户页面 -->
+		<action name="toEditPage" class="CustomerAction" method="selectAllDict">
+			<result>/WEB-INF/customer/edit.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 修改客户 -->
+		<action name="update" class="CustomerAction" method="updateCustomer">
+			<result type="chain">list</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 删除客户 -->
+		<action name="delete" class="CustomerAction" method="deleteCustomer">
+			<result type="chain">list</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 根据名称查询客户 -->
+		<action name="queryByName" class="CustomerAction" method="selectByName">
+			<result>/WEB-INF/customer/list.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 跳到新增客户页面 -->
+		<action name="toAddPage" class="CustomerAction" method="selectAllDict">
+			<result>/WEB-INF/customer/add.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 新增客户 -->
+		<action name="add" class="CustomerAction" method="addCustomer">
+			<result type="chain">list</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 跳到动态查询页面 -->
+		<action name="customerToSelectPage" class="CustomerAction"
+			method="selectAllDict">
+			<result>/WEB-INF/customer/select.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 动态查询客户 -->
+		<action name="customerMorecondition" class="CustomerAction"
+			method="select">
+			<result>/WEB-INF/customer/list.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 客户来源统计 -->
+		<action name="customerSourceCount" class="CustomerAction"
+			method="sourceCount">
+			<result>/WEB-INF/customer/sourceCount.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 客户级别统计 -->
+		<action name="customerLevelCount" class="CustomerAction"
+			method="levelCount">
+			<result>/WEB-INF/customer/levelCount.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<!-- 客户列表分页 -->
+		<action name="limitPage" class="CustomerAction" method="limitPage">
+			<result>/WEB-INF/customer/limitPage.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+
+	</package>
+</struts>

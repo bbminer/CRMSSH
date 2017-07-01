@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- 搭建表和类的关系 -->
+<hibernate-mapping package="com.zy.entity">
+
+	<class name="Customer" table="t_customer" lazy="false">
+		<!-- 主键 -->
+		<id name="id" column="cid">
+			<generator class="increment" />
+		</id>
+		<!-- 非主键 -->
+		<property name="custName" column="custName" />
+		<property name="custSource" column="custSource" />
+		<property name="custPhone" column="custPhone"></property>
+		<property name="custMobile" column="custMobile"></property>
+
+		<many-to-one name="dict" column="custLevel" class="Dict"
+			fetch="join"></many-to-one>
+	</class>
+
+	<query name="selectCustomerSource">
+	select new list(custSource,count(custSource)) from
+		Customer group by custSource
+	</query>
+
+</hibernate-mapping>

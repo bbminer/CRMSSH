@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- 搭建表和类的关系 -->
+<hibernate-mapping package="com.zy.entity">
+
+	<class name="LinkMan" table="t_linkman" lazy="false">
+		<!-- 主键 -->
+		<id name="id" column="linkid">
+			<generator class="increment" />
+		</id>
+		<!-- 非主键 -->
+		<property name="name" column="linkName" />
+		<property name="gender" column="linkGender" />
+		<property name="phone" column="linkPhone"></property>
+		<property name="mobile" column="linkMobile"></property>
+
+		<many-to-one name="customer" column="clid" class="Customer" fetch="join"></many-to-one>
+	</class>
+
+</hibernate-mapping>
